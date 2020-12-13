@@ -16,7 +16,7 @@ namespace AtCoder
         static void Main()
         {
 
-            const Questions question = Questions.B;
+            const Questions question = Questions.C;
 
             switch (question)
             {
