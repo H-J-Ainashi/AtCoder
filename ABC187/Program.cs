@@ -43,6 +43,28 @@ namespace AtCoder
                     }
                     break;
                 case Questions.C:
+                    {
+                        var num = int.Parse(Console.ReadLine());
+                        var dic = new Dictionary<string, int>();
+                        for (int i = 0; i < num; ++i)
+                        {
+                            var str = Console.ReadLine();
+                            var add = (str[0] == '!' ? 1 : 2);
+                            var word = (str[0] == '!' ? str.Substring(1) : str);
+                            if (dic.ContainsKey(word))
+                                dic[word] = dic[word] | add;
+                            else
+                                dic[word] = add;
+                        }
+
+                        foreach (var item in dic)
+                            if (item.Value == 3)
+                            {
+                                Console.WriteLine(item.Key);
+                                return;
+                            }
+                        Console.WriteLine("satisfiable");
+                    }
                     break;
                 case Questions.D:
                     break;
