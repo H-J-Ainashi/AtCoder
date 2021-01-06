@@ -15,7 +15,7 @@ namespace AtCoder
         static void Main()
         {
 
-            const Questions question = Questions.C;
+            const Questions question = Questions.D;
 
             switch (question)
             {
@@ -67,6 +67,35 @@ namespace AtCoder
                     }
                     break;
                 case Questions.D:
+                    {
+                        var num = int.Parse(Console.ReadLine());
+                        var src = new long[num][];
+                        src[0] = new long[] { 0, 0 };
+
+                        for (int i = 0; i < num; ++i)
+                        {
+                            var args = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+                            src[i] = new long[] { args[0] + args[1], args[0] };
+                        }
+                        var list = src.ToList();
+                        list.Sort((l, r) => l[0].CompareTo(r[0]));
+                        list.Reverse();
+                        list.Insert(0, new long[] { 0, 0 });
+
+                        for (int i = 1; i < num; ++i)
+                        {
+                            list[i][0] += list[i - 1][0];
+                            list[i - 1][1] = list[i][1];
+                        }
+
+                        list[num][0] += list[num - 1][0];
+                        list[num][1] = 0;
+
+                        for (int i = num - 1; 0 <= i; --i)
+                            list[i][1] += list[i + 1][1];
+
+                        Console.WriteLine(list.FindIndex(x => x[0] > x[1]));
+                    }
                     break;
                 case Questions.E:
                     break;
