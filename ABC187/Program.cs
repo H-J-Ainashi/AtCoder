@@ -68,33 +68,30 @@ namespace AtCoder
                     break;
                 case Questions.D:
                     {
-                        var num = int.Parse(Console.ReadLine());
-                        var src = new long[num][];
-                        src[0] = new long[] { 0, 0 };
 
+                        var num = int.Parse(Console.ReadLine());
+
+                        var difference = 0L;
+                        var point = new long[num];
                         for (int i = 0; i < num; ++i)
                         {
-                            var args = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
-                            src[i] = new long[] { args[0] + args[1], args[0] };
+                            var args = Console.ReadLine().Split(' ').Select(x => long.Parse(x)).ToArray();
+                            difference -= args[0];
+                            point[i] = args[0] + args[0] + args[1];
                         }
-                        var list = src.ToList();
-                        list.Sort((l, r) => l[0].CompareTo(r[0]));
-                        list.Reverse();
-                        list.Insert(0, new long[] { 0, 0 });
 
-                        for (int i = 1; i < num; ++i)
+                        Array.Sort(point);
+                        for (int i = 1; i <= num; ++i)
                         {
-                            list[i][0] += list[i - 1][0];
-                            list[i - 1][1] = list[i][1];
+                            difference += point[num - i];
+                            if (difference > 0)
+                            {
+                                Console.WriteLine(i);
+                                return;
+                            }
                         }
 
-                        list[num][0] += list[num - 1][0];
-                        list[num][1] = 0;
 
-                        for (int i = num - 1; 0 <= i; --i)
-                            list[i][1] += list[i + 1][1];
-
-                        Console.WriteLine(list.FindIndex(x => x[0] > x[1]));
                     }
                     break;
                 case Questions.E:
