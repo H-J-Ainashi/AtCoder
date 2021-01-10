@@ -15,11 +15,15 @@ namespace AtCoder
         static void Main()
         {
 
-            const Questions question = Questions.E;
+            const Questions question = Questions.B;
 
             switch (question)
             {
                 case Questions.A:
+                    {
+                        var args = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+                        Console.WriteLine((args[0] - 1) / args[1] + 1);
+                    }
                     break;
                 case Questions.B:
                     break;
