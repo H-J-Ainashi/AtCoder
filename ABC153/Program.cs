@@ -15,7 +15,7 @@ namespace AtCoder
         static void Main()
         {
 
-            const Questions question = Questions.B;
+            const Questions question = Questions.C;
 
             switch (question)
             {
@@ -34,6 +34,19 @@ namespace AtCoder
                     }
                     break;
                 case Questions.C:
+                    {
+                        var args = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+                        var enamy_n = args[0];
+                        var killer_n = args[1];
+                        var ans = 0L;
+                        var enamies = Console.ReadLine().Split(' ').Select(x => long.Parse(x)).ToArray();
+                        Array.Sort(enamies);
+
+                        for (int i = 0, l = enamy_n - killer_n; i < l; ++i)
+                            ans += enamies[i];
+
+                        Console.WriteLine(ans);
+                    }
                     break;
                 case Questions.D:
                     break;
