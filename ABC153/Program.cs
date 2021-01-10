@@ -26,6 +26,12 @@ namespace AtCoder
                     }
                     break;
                 case Questions.B:
+                    {
+                        var args = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+                        var enamy = args[0];
+                        var num = args[1];
+                        Console.WriteLine((Console.ReadLine().Split(' ').Select(x => long.Parse(x)).Sum() >= enamy ? "Yes" : "No"));
+                    }
                     break;
                 case Questions.C:
                     break;
