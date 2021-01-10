@@ -15,7 +15,7 @@ namespace AtCoder
         static void Main()
         {
 
-            const Questions question = Questions.C;
+            const Questions question = Questions.D;
 
             switch (question)
             {
@@ -49,6 +49,12 @@ namespace AtCoder
                     }
                     break;
                 case Questions.D:
+                    {
+                        var num = long.Parse(Console.ReadLine());
+                        var ans = 0;
+                        for (; num != 0; ++ans, num >>= 1) ;
+                        Console.WriteLine((1L << ans) - 1);
+                    }
                     break;
                 case Questions.E:
                     {
